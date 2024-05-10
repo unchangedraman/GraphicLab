@@ -1,8 +1,37 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
-import { ClerkProvider } from '@clerk/nextjs'
+// import "./globals.css";
+// import ConvexClientProvider  from "../provider/convex-client-provider"; 
+// // import Provider from "@/provider/provider";
 const inter = Inter({ subsets: ["latin"] });
+
+
+
+// export default function RootLayout({
+//   children,
+// }: Readonly<{
+//   children: React.ReactNode;
+// }>) {
+//   return (
+
+//     <html lang="en">
+//       {/* <meta httpEquiv="Content-Security-Policy" content="script-src 'self' https://scdn.clerk.com/; ..." /> */}
+//       {/* className={inter.className} */}
+//       <body >
+//       <ConvexClientProvider>
+//         {children}
+//       </ConvexClientProvider>
+//         </body>
+//     </html>
+ 
+//   );
+// }
+
+
+
+
+import { ClerkProvider, SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
+import './globals.css';
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -11,14 +40,26 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
     <ClerkProvider>
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+      <html lang="en">
+        <body>
+          <header>
+            <SignedOut>
+              <SignInButton />
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+          </header>
+          <main>
+            {children}
+          </main>
+        </body>
+      </html>
     </ClerkProvider>
-  );
+  )
 }
