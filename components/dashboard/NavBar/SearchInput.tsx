@@ -3,7 +3,7 @@
 import qs from "query-string";
 import { Search } from "lucide-react";
 import { useDebounceValue } from "usehooks-ts";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation"; // next/router works only for pages
 
 import { ChangeEvent, useEffect, useState } from "react";
 
@@ -26,7 +26,7 @@ export const SearchInput = () => {
           search: debouncedValue,
         },
       },
-      { skipEmptyString: true, skipNull: true }
+      { skipEmptyString: true, skipNull: true } // also pass the second argument as these
     );
 
     router.push(url);
