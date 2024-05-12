@@ -5,7 +5,7 @@ import { Plus } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 import { cn } from "@/lib/utils";
-import { api } from "../../../convex/_generated/api";
+import { api } from "../../convex/_generated/api";
 import { useApiMutation } from "@/hooks/useApiMutation";
 
 type NewBoardButtonProps = {
@@ -22,7 +22,7 @@ const NewBoardButton = ({ orgId, disabled }: NewBoardButtonProps) => {
       orgId,
       title: "Untitled",
     })
-      .then((id) => {
+      .then((id : any) => {
         toast.success("Board created");
         router.push(`/board/${id}`);
       })

@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useApiMutation } from "@/hooks/useApiMutation";
 import { useOrganization } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
-import { api } from "../../../convex/_generated/api";
+import { api } from "../../convex/_generated/api";
 import { toast } from "sonner";
 
 const NoBoards = () => {
